@@ -1,107 +1,164 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>재영의 프로필</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>재영의 프로필</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <style>
-    
     .black-bg {
-    width : 100%;
-    height : 100%;
-    position : fixed;
-    background : rgba(0,0,0,0.5);
-    z-index : 5;
-    padding: 30px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 1s;
-  }
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  display: flex; 
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; 
+  background: rgba(0,0,0,0.5);
+  z-index: 5;
+  padding: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s;
+}
 
-  .white-bg {
-    background: white;
-    border-radius: 5px;
-    padding: 30px;
-  } 
+.white-bg {
+  background: white;
+  border-radius: 5px;
+  padding: 30px;
+  max-height: 80%; 
+  overflow-y: auto; 
+}
 
+    .show-modal {
+      visibility: visible;
+      opacity: 1;
+    }
 
- .show-modal{
-    visibility: visible;
-    opacity: 1;
-  }
+    .comment-section {
+      margin-top: 20px;
+    }
 
+    .comment {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .comment .content {
+      font-weight: bold;
+    }
+
+    .comment .date {
+      font-size: 12px;
+      color: #777;
+    }
   </style>
-  <body>
-    <div>
-      
-      <div class="black-bg">
-        <div class="white-bg">
-          
-            <div>
-                
-
-                <div style="text-align: center">
-                    <img src="../img/선재영.jpg" style="width: 80px; border-radius: 100px;">
-                    <h1>선재영</h1>
-                </div>
-                
-                <hr>
-                <table>
-                <td>
-                    <tr>
-                        <td>
-                            <h2>More infomation</h2>
-                            <ul  class="text">
-                                <li>이름 : 선재영</li>
-                                <li>생일 : 1998-04-22</li>
-                                <li>핸드폰 : 010 - 7723 - 1892</li>
-                                <li>이메일 : wodud1892@naver.com</li>
-                                <li>깃허브 : <a target="_blank" href="https://github.com/wodm15">https://github.com/wodm15</a></li>
-                            </ul>
-                        </td>
-                        <td>
-                            
-                            
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h2>Etc</h2>
-                            <ul  class="text">
-                                <li>Python 자료구조 공부 중</li>
-                                <li>자바스크립트 이것저것 해보는중</li>
-                                <li>스파르타 nodejs 공부 중</li>
-                                <li>특기는 일 만들어 하기</li>
-                                <li>게임 좋아함</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </td>   
-                </table>
-
-
-            </div>
+</head>
+<body>
+  <div>
+    <div class="black-bg">
+      <div class="white-bg">
+        <div>
+          <div style="text-align: center">
+            <img src="../img/선재영.jpg" style="width: 80px; border-radius: 100px;">
+            <h1>선재영</h1>
+          </div>
+          <hr>
           <div>
-            <button type="button" class="btn btn-danger" id="close">닫기</button>
+            <h2>More information</h2>
+            <ul class="text">
+              <li>이름 : 선재영</li>
+              <li>생일 : 1998-04-22</li>
+              <li>핸드폰 : 010 - 7723 - 1892</li>
+              <li>이메일 : wodud1892@naver.com</li>
+              <li>깃허브 : <a target="_blank" href="https://github.com/wodm15">https://github.com/wodm15</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Etc</h2>
+            <ul class="text">
+              <li>Python 자료구조 공부 중</li>
+              <li>자바스크립트 이것저것 해보는중</li>
+              <li>스파르타 nodejs 공부 중</li>
+              <li>특기는 일 만들어 하기</li>
+              <li>게임 좋아함</li>
+            </ul>
+          </div>
+          <div class="comment-section">
+            <h2>댓글</h2>
+            <div class="comments">
+              <!-- 댓글 추가되는 곳 -->
+            </div>
+            <textarea class="comment-input" rows="4" cols="50" placeholder="댓글을 입력해주세요..."></textarea>
+            <br>
+            <button class="submit-comment" style="cursor: pointer; ">댓글 등록</button>
           </div>
         </div>
-      </div> 
-
-      <button class='btn-p'>모달창용</button>
+        <div>
+          <button type="button" class="btn btn-danger" id="close" style="cursor: pointer;">닫기</button>
+        </div>
+      </div>
     </div>
+    <button class='btn1'>선재영</button>
+  </div>
+</body>
+<script>
+  $(document).ready(function() {
+    // 모달 열기
+    $('.btn1').on('click', function() {
+      $('.black-bg').addClass('show-modal');
+    });
 
+    // 모달 닫기
+    $('#close').on('click', function() {
+      $('.black-bg').removeClass('show-modal');
+    });
 
-  </body>
-  <script> $('.btn-p').on('click',function(){
+    // 댓글 등록 소스
+    $('.submit-comment').on('click', function() {
+      var comment = $('.comment-input').val();
+      if (comment.trim() !== "") {
+        var now = new Date();
+        var dateString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+        var commentElement = $('<div class="comment"><p class="content"></p><p class="date"></p><button class="delete-comment">삭제</button></div>');
+        commentElement.find('.content').text(comment);
+        commentElement.find('.date').text(dateString);
+        $('.comments').append(commentElement);
+        $('.comment-input').val("");
 
-    $('.black-bg').addClass('show-modal');
-  })
+        // 로컬 스토리지에 댓글 저장하기
+        var savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+        savedComments.push({text: comment, date: dateString});
+        localStorage.setItem('comments', JSON.stringify(savedComments));
+      } else {
+        alert("댓글을 입력해주세요");
+      }
+    });
 
-  $('#close').on('click',function(){
-    $('.black-bg').removeClass('show-modal');
-  })
-  </script>
+    // 댓글 삭제 소스
+    $(document).on('click', '.delete-comment', function() {
+      $(this).parent('.comment').remove();
+      
+      // 로컬 스토리지에서도 삭제
+      var commentText = $(this).siblings('.content').text();
+      var commentDate = $(this).siblings('.date').text();
+      var savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+      savedComments = savedComments.filter(function(comment) {
+        return !(comment.text === commentText && comment.date === commentDate);
+      });
+      localStorage.setItem('comments', JSON.stringify(savedComments));
+    });
+
+    // 페이지가 로드될 때 저장된 댓글을 가져와서 화면에 표시
+    var savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+    savedComments.forEach(function(comment) {
+      var commentElement = $('<div class="comment"><p class="content"></p><p class="date"></p><button class="delete-comment">삭제</button></div>');
+      commentElement.find('.content').text(comment.text);
+      commentElement.find('.date').text(comment.date);
+      $('.comments').append(commentElement);
+    });
+  });
+</script>
 </html>
