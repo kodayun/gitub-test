@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미니 프로젝트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Black+Han+Sans&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .mytitle {
+            font-family: "Black Han Sans", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: red;
+            font-size: 100px;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+
+        body {
+            background-image: url("https://media.istockphoto.com/id/1055097788/ko/%EC%82%AC%EC%A7%84/%EA%B5%AC%EA%B8%89%EC%B0%A8.jpg?s=2048x2048&w=is&k=20&c=w_X_T7BkhmOOzdjkfPrn-vA8I3PEmcPhoxAToZUFFe0=");
+            background-position: center;
+            background-size: auto;
+        }
+
+        .rulebtn {
+            font-family: "Abril Fatface", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
+
+        .rulebtn>button {
+
+            float: right;
+            width: 300px;
+            height: 70px;
+            background-color: yellow;
+            color: black;
+            font-size: 30px;
+            border: 2px solid yellow;
+            border-radius: 30px;
+            margin-top: 470px;
+            margin-right: 70px;
+
+        }
+
+        .teamname {
+            font-family: "Black Han Sans", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .teamname>button {
+            width: 200px;
+            height: 70px;
+            background-color: transparent;
+            color: yellow;
+            font-size: 30px;
+            border-color: transparent;
+            margin-top: 470px;
+            margin-right: 50px;
+            margin-left: 30px;
+
+        }
+
+        .modal {
+            position: absolute;
+            display: none;
+            justify-content: center;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal_body {
+            position: absolute;
+            top: 50%;
+            /*모달창을 화면가운데로*/
+
+            width: 800px;
+            height: 800px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            background-color: rgb(255, 255, 255);
+            /*모달창 흰색*/
+            border-radius: 8px;
+            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+            transform: translateY(-50%);
+            /*모듈창열었을때 위치 가운데로*/
+        }
+    </style>
+
+    <script>
+        function openclose1() {
+            $('#namecard1').toggle();
+        }
+
+        function openclose2() {
+            $('#namecard2').toggle();
+        }
+
+        function openclose3() {
+            $('#namecard3').toggle();
+        }
+
+        function openclose4() {
+            $('#namecard4').toggle();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="mytitle">
+        <p>
+            119구조대
+        </p>
+
+    </div>
+    <div>
+
+        <div class="rulebtn">
+            <button> Ground Rules</button>
+        </div>
+
+        <div>
+            <h2> 9조</h2>
+            <h3> 웹개발 왕초보들이 모여 서로가 서로를 구조해주는 TEAM</h3>
+        </div>
+
+        <div class="teamname">
+            <button onclick="openclose1()"> 선재영</button>
+            <button onclick="openclose2()"> 오승민</button>
+            <button onclick="openclose3()"> 고다연</button>
+            <button onclick="openclose4()"> 정서윤</button>
+
+        </div>
+
+        <div class="teamnamecard" id="namecard">
+
+            <div id="namecard1">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">선재영</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="namecard2">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">오승민</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="namecard3">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">고다연</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="namecard4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">정서윤</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--여기부터 팀 소개 모달 창 입니다-->
+        <div class="modal">
+            <div class="modal_body">
+                <h2>9조대</h2>
+                <p> 9조대 소개</p>
+                <p> 9조대 규칙</p>
+                <button class="btn-close-modal">닫기</button>
+
+            </div>
+        </div>
+        <button class="btn-open-modal">팀 소개</button>
+        <script>
+            //버튼을 눌렀을 때 모달창이 열리고 닫히게 하기
+            const modal = document.querySelector('.modal');
+            const btnOpenModal = document.querySelector('.btn-open-modal');
+            const btnCloseModal = document.querySelector('.btn-close-modal');
+
+            btnOpenModal.addEventListener("click", () => {
+                modal.style.display = "flex";
+            });//모달창 열기
+
+            btnCloseModal.addEventListener("click", () => {
+                modal.style.display = "none"
+            });//모달창 닫기
+        </script>
+
+
+</body>
+
+</html>
