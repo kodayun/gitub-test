@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀원에게 한마디 테스트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .commentInputbtn {
+            margin-top: 10px;
+        }
+
+        .commentOutput {
+            margin-top: 50px;
+        }
+
+        table,
+        td {
+            border-collapse: collapse;
+            width: 800px;
+
+        }
+
+        table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        table tr:first-child td {
+            background-color: black;
+            border: 0;
+            color: #fff;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#commentBtn').click(function () {
+                commentInput();
+            });
+        });
+
+        function commentInput() {
+            let userName = $('#userName').val();
+            let userComment = $('#userComment').val();
+
+            let temp_html = `<tr>
+                <th>${userName}</th>
+                <th>${userComment}</th>
+                <th> 
+                    <button class="commentEditbtn">edit</button>
+                </th>
+                <th>
+                    <button>delete</button>
+                </th>
+            </tr>`;
+            $('#commentTable').append(temp_html);
+        }
+
+        
+    </script>
+</head>
+
+<body>
+    <form action="url" method="get">
+        <!--팀원에게 한마디 입력창입니다-->
+        <div>
+            <label for="">닉네임:</label>
+            <input type="text" id="userName" name="nickname" placeholder="">
+        </div>
+        <div>
+            <label for="">내용:</label>
+            <textarea name="comment" id="userComment" rows="3" cols="30" placeholder="하시고 싶은 말을 적어주세요"></textarea>
+        </div>
+        <div class="commentInputbtn">
+            <button type="button" id="commentBtn">등록하기</button>
+        </div>
+
+    </form>
+    <!--팀원에게 한마디 출력창입니다-->
+    <table class="commentOutput">
+        <tbody id="commentTable">
+            <tr>
+                <td style="width: 15%">닉네임</td>
+                <td style="width: 69%">내용</td>
+                <td style="width: 8%">수정</td>
+                <td style="width: 8%">삭제</td>
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+
+</html>
