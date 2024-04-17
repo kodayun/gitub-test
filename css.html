@@ -11,7 +11,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Black+Han+Sans&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Black+Han+Sans&family=Do+Hyeon&display=swap"
         rel="stylesheet">
 
     <style>
@@ -25,6 +26,24 @@
             margin-left: 20px;
         }
 
+        a {
+            color: red;
+            text-decoration-line: none;
+
+        }
+
+        a:hover {
+            color: yellow;
+            text-decoration: none
+        }
+
+        .secondtitle {
+            font-family: "Do Hyeon", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: white;
+            margin-left: 20px;
+        }
 
         body {
             background-image: url("https://media.istockphoto.com/id/1055097788/ko/%EC%82%AC%EC%A7%84/%EA%B5%AC%EA%B8%89%EC%B0%A8.jpg?s=2048x2048&w=is&k=20&c=w_X_T7BkhmOOzdjkfPrn-vA8I3PEmcPhoxAToZUFFe0=");
@@ -50,7 +69,7 @@
             font-size: 30px;
             border: 2px solid yellow;
             border-radius: 30px;
-            margin-top: 470px;
+            margin-top: 500px;
             margin-right: 70px;
 
         }
@@ -68,7 +87,7 @@
             color: yellow;
             font-size: 30px;
             border-color: transparent;
-            margin-top: 470px;
+            margin-top: 420px;
             margin-right: 50px;
             margin-left: 30px;
 
@@ -111,26 +130,26 @@
     </style>
 
     <script>
-       
-       function openclose1(){
-        document.getElementById('namecard1').style.display = 'block';
-       }
-       function openclose2(){
-        document.getElementById('namecard2').style.display = 'block';
-       }
-       function openclose3(){
-        document.getElementById('namecard3').style.display = 'block';
-       }
-       function openclose4(){
-        document.getElementById('namecard4').style.display = 'block';
-       }
-       
-       
-       
-       
-       
-       function openclose1() {
-        
+
+        function openclose1() {
+            document.getElementById('namecard1').style.display = 'block';
+        }
+        function openclose2() {
+            document.getElementById('namecard2').style.display = 'block';
+        }
+        function openclose3() {
+            document.getElementById('namecard3').style.display = 'block';
+        }
+        function openclose4() {
+            document.getElementById('namecard4').style.display = 'block';
+        }
+
+
+
+
+
+        function openclose1() {
+
             $('#namecard1').toggle();
         }
 
@@ -150,9 +169,9 @@
 </head>
 
 <body>
-    <div class="mytitle">
+    <div class="mytitle" style="text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;">
         <p>
-            119구조대
+            <a href='css.html'>119조대</a>
         </p>
 
     </div>
@@ -162,9 +181,14 @@
             <button> Ground Rules</button>
         </div>
 
-        <div>
-            <h2> 9조</h2>
-            <h3> 웹개발 왕초보들이 모여 서로가 서로를 구조해주는 TEAM</h3>
+        <div class="secondtitle" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">
+            <h2>
+                <p>
+                    웹개발 왕초보들이 모여
+                </p>
+                <p>서로가 서로를 구조해주는 TEAM</p>
+            </h2>
+
         </div>
 
         <div class="teamname">
@@ -175,92 +199,92 @@
 
         </div>
 
-            <div class="teamnamecard" id="namecard">
+        <div class="teamnamecard" id="namecard">
 
-                <div id="namecard1" style="display:none">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">선재영</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small>
-                                    </p>
-                                </div>
-                            </div>
+            <div id="namecard1" style="display:none">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
                         </div>
-                    </div>
-                </div>
-
-                <div id="namecard2" style="display:none">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">오승민</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="namecard3" style="display:none">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">고다연</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="namecard4" style="display:none">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">정서윤</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small>
-                                    </p>
-                                </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">선재영</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
+                                        ago</small>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div id="namecard2" style="display:none">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">오승민</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
+                                        ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="namecard3" style="display:none">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">고다연</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
+                                        ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="namecard4" style="display:none">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">정서윤</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
+                                        ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--여기부터 팀 소개 모달 창 입니다-->
         <div class="modal">
