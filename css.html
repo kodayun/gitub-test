@@ -16,6 +16,63 @@
         rel="stylesheet">
 
     <style>
+
+  .container-comment{
+
+    margin-left: 0%;
+  }
+
+.commentInputbtn {
+            margin-top: 10px;
+        }
+
+        .commentOutput {
+            margin-top: -50px;
+            margin-left: 500px;
+            background-color: white;
+            color: black;
+        }
+
+        table,
+        td {
+            border-collapse: collapse;
+            width: 800px;
+        }
+
+        table td {
+            padding: 10px;
+            text-align: center;
+            
+        }
+
+        table tr:first-child td {
+            background-color: black;
+            border: 0;
+            color: #fff;
+        }
+
+        /* 닉네임과 댓글 입력을 담는 div를 세로로 배열합니다 */
+        .commentForm {
+            display: flex;
+            flex-direction: column;
+            width:30%;
+            background-color: grey;
+            margin-left:1%;
+            padding: 10px;
+            float:left;
+        }
+
+        #userName {
+            background-color: #f0f0f0;
+            color: #333;
+            width: 30%;
+        }
+        #userComment {
+            background-color: #f0f0f0;
+            color: #333;
+            width: 100%;
+        }
+  
        .black-bg {
   width: 100%;
   height: 100%;
@@ -198,6 +255,9 @@
             <button class="btn-modal4">정서윤</button>
 
         </div>
+
+
+        
 
         <div>
             <div class="black-bg" id="modal1">
@@ -419,6 +479,38 @@
         </div>
 
         <button class="btn-open-modal">Ground Rules</button>
+
+        <br><br>
+        <div class="container-comment">
+          <p style="background-color: yellow; color:red; width: 150px;" > &nbsp&nbsp&nbsp&nbsp 팀을 위한 한마디</p>
+          <!--팀원들에 한마디를 입력하는 파트입니다-->
+    <form>
+      <div class="commentForm">
+          <label for="">닉네임:</label>
+          <input type="text" id="userName" name="nickname" placeholder="">
+          <label for="">내용:</label>
+          <textarea name="comment" id="userComment" rows="3" cols="30" placeholder="하시고 싶은 말을 적어주세요"></textarea>
+          <div class="commentInputbtn">
+              <button type="button" id="commentBtn">등록하기</button>
+          </div>
+      </div>
+  </form>
+  <br><br>
+  <!--팀원들에 한마디 출력하는 파트입니다-->
+  <table class="commentOutput">
+
+      <tbody id="commentTable">
+          <tr>
+              <td style="width: 15%">닉네임</td>
+              <td style="width: 69%">내용</td>
+              <td style="width: 8%">수정</td>
+              <td style="width: 8%">삭제</td>
+          </tr>
+      </tbody>
+  </table>
+          <br><br><br><br><br><br><br><br><br><br>
+        </div>
+
         <script>
             //버튼을 눌렀을 때 모달창이 열리고 닫히게 하기
             const modal = document.querySelector('.modal');
@@ -516,6 +608,85 @@
     });
 
 
+ // 최대 댓글 개수
+ const maxComments = 5;
+
+// 현재 댓글 개수
+let currentComments = 0;
+
+//등록하기 버튼 구현 파트입니다
+$(document).ready(function () {
+    $('#commentBtn').click(function () {
+        if (currentComments >= maxComments) {
+            alert('최대 ' + maxComments + '개의 댓글까지만 작성할 수 있습니다.');
+            return;
+        }
+        commentInput();
+    });
+});
+
+function commentInput() {
+    let userName = $('#userName').val().trim();
+    let userComment = $('#userComment').val().trim();
+
+    if (userName === '' || userComment === '') {
+        alert('닉네임과 내용을 모두 입력해주세요.');
+        return;
+    }
+
+    let temp_html = `<tr id="tr001" data-name='${userName}' data-comment='${userComment}'>
+        <td>${userName}</td>
+        <td>${userComment}</td>
+        <td> 
+            <button class="commentEditbtn">edit</button>
+        </td>
+        <td>
+            <button type="button" id="commentDelbtn" href="#" onclick="commentDel('001');">delete</button>
+        </td>
+    </tr>`;
+    $('#commentTable').append(temp_html);
+
+    // 댓글 개수 증가
+    currentComments++;
+}
+
+//edit 버튼 구현 파트입니다
+$(document).on('click', '.commentEditbtn', function() {
+    var name = $(this).parents('tr').attr('data-name');
+    var comment = $(this).parents('tr').attr('data-comment');
+
+    $(this).parents('tr').find('td:eq(0)').html(`<input name='edit_text' value='${name}'>`);
+    $(this).parents('tr').find('td:eq(1)').html(`<textarea name='edit_comment'>${comment}</textarea>`);
+
+    $(this).parents('tr').find('td:eq(2)').prepend("<button class='commentUpdatebtn'>update</button>");
+    $(this).hide();//edit 버튼을 숨기고, update 버튼을 붙여줌
+});
+
+//update 버튼으로 수정 내용을 저장하는 파트 입니다
+$(document).on('click', '.commentUpdatebtn', function() {
+    var editName = $(this).parents('tr').find("input[name='edit_text']").val();
+    var editComment = $(this).parents('tr').find("textarea[name='edit_comment']").val();
+
+    $(this).parents('tr').find('td:eq(0)').text(editName);
+    $(this).parents('tr').find('td:eq(1)').text(editComment);
+
+    $(this).parents('tr').attr('data-name', editName);
+    $(this).parents('tr').attr('data-comment', editComment);
+
+    $(this).parents('tr').find('.commentEditbtn').show();
+    $(this).remove();
+});
+
+//delete 버튼 구현 파트입니다
+function commentDel(idx){
+    var a = confirm('정말 삭제할까요?');
+    if(a){
+        $("#tr" +idx).remove();
+
+        // 댓글 개수 감소
+        currentComments--;
+    }
+}
 
 </script>
 </body>
