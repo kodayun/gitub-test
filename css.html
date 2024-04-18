@@ -16,6 +16,46 @@
         rel="stylesheet">
 
     <style>
+       .black-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  display: flex; 
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; 
+  background: rgba(0,0,0,0.5);
+  z-index: 5;
+  padding: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.white-bg {
+  background: white;
+  border-radius: 5px;
+  padding: 30px;
+  max-height: 80%; 
+  overflow-y: auto; 
+}
+
+.show-modal {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* 반짝이는 이펙트 css */
+    @keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink-effect 1s step-end infinite;}
+  
         .mytitle {
             font-family: "Black Han Sans", sans-serif;
             font-weight: 400;
@@ -75,7 +115,7 @@
             position: absolute;
             display: none;
             justify-content: center;
-
+            background-color: lightgray;
             top: 0;
             left: 0;
 
@@ -97,7 +137,7 @@
 
             text-align: center;
 
-            background-color: rgb(255, 255, 255);
+            background-color: lightblue;
             /*모달창 흰색*/
             border-radius: 8px;
             box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
@@ -128,42 +168,7 @@
         }
     </style>
 
-    <script>
 
-        function openclose1() {
-            document.getElementById('namecard1').style.display = 'block';
-        }
-        function openclose2() {
-            document.getElementById('namecard2').style.display = 'block';
-        }
-        function openclose3() {
-            document.getElementById('namecard3').style.display = 'block';
-        }
-        function openclose4() {
-            document.getElementById('namecard4').style.display = 'block';
-        }
-
-
-
-
-
-        function openclose1() {
-
-            $('#namecard1').toggle();
-        }
-
-        function openclose2() {
-            $('#namecard2').toggle();
-        }
-
-        function openclose3() {
-            $('#namecard3').toggle();
-        }
-
-        function openclose4() {
-            $('#namecard4').toggle();
-        }
-    </script>
 
 </head>
 
@@ -187,99 +192,219 @@
         </div>
 
         <div class="teamname">
-            <button onclick="openclose1()"> 선재영</button>
-            <button onclick="openclose2()"> 오승민</button>
-            <button onclick="openclose3()"> 고다연</button>
-            <button onclick="openclose4()"> 정서윤</button>
+            <button class="btn-modal1">선재영</button>
+            <button class="btn-modal2">오승민</button>
+            <button class="btn-modal3">고다연</button>
+            <button class="btn-modal4">정서윤</button>
 
         </div>
 
-        <div class="teamnamecard" id="namecard">
-
-            <div id="namecard1" style="display:none">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">선재영</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                        ago</small>
-                                </p>
-                            </div>
-                        </div>
+        <div>
+            <div class="black-bg" id="modal1">
+              <div class="white-bg">
+                <!-- 모달창용1 내용 -->
+                <div>
+                  <div style="text-align: center">
+                    <img src="imgs/선재영.jpeg" style="width: 100px; border-radius: 100px;">
+                    <h1>선재영</h1>
+                  </div>
+                  <hr>
+                  <div>
+                    <h2>Information</h2>
+                    <ul class="text">
+                      <li>이름 : 선재영</li>
+                      <li>생일 : 04-22</li>
+                      <li>MBTI : INFP</li>
+                      <li>취미 : 탁구</li>
+                      <li>깃허브 : <a target="_blank" href="https://github.com/wodm15">https://github.com/wodm15</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2>TMI</h2>
+                    <ul class="text">
+                      <li>Python 자료구조 공부 중</li>
+                      <li>자바스크립트 이것저것 해보는중</li>
+                      <li>스파르타 nodejs 공부 중</li>
+                      <li>특기는 일 만들어 하기</li>
+                      <li>게임 좋아함</li>
+                    </ul>
+                  </div>
+                  <div class="comment-section">
+                    <h2>댓글</h2>
+                    <div class="comments">
+                      <!-- 댓글 추가되는 곳 -->
                     </div>
+                    <textarea class="comment-input" rows="4" cols="50" placeholder="댓글을 입력해주세요..."></textarea>
+                    <br>
+                    <button class="submit-comment" style="cursor: pointer; ">댓글 등록</button>
+                  </div>
                 </div>
+                <div>
+                  <button type="button" class="btn btn-danger" id="close1" style="cursor: pointer;">닫기</button>
+                </div>
+              </div>
+            </div>
+    
+        
+            <div class="black-bg" id="modal2">
+              <div class="white-bg">
+                <!-- 모달창용2 내용 -->
+                <div>
+                  <div style="text-align: center">
+                    <img src="imgs/오승민.jpg" style="width: 80px; border-radius: 100px;">
+                    <h1>오승민</h1>
+                  </div>
+                  <hr>
+                  <div>
+                    <h2>Information</h2>
+                    <ul class="text">
+                      <li>이름 : 오승민</li>
+                      <li>생일 : 03-14</li>
+                      <li>MBTI : INFJ</li>
+                      <li>취미 : 여행</li>
+                      <li>깃허브 : <a target="_blank" href="https://github.com/seungminOh2024">https://github.com/seungminOh2024</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2>TMI</h2>
+                    <ul class="text">
+                      <li>Node.js_5기로 코딩에 입문하는 중</li>
+                      <li>코딩 및 IT 전반에 관심이 많다(관심만)</li>
+                      <li>특기는 생활 속 사소한 탐구와 탐험</li>
+                      
+                    </ul>
+                  </div>
+                  <div class="comment-section">
+                    <h2>댓글</h2>
+                    <div class="comments">
+                      <!-- 댓글 추가되는 곳 -->
+                    </div>
+                    <textarea class="comment-input" rows="4" cols="50" placeholder="댓글을 입력해주세요..."></textarea>
+                    <br>
+                    <button class="submit-comment" style="cursor: pointer; ">댓글 등록</button>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-danger" id="close2" style="cursor: pointer;">닫기</button>
+                </div>
+              </div>
+            </div>
+    
+        
+            <div class="black-bg" id="modal3">
+              <div class="white-bg">
+                <!-- 모달창용3 내용 -->
+                <div>
+                  <div style="text-align: center">
+                    <img src="imgs/고다연.png" style="width: 80px; border-radius: 100px;">
+                    <h1>고다연</h1>
+                  </div>
+                  <hr>
+                  <div>
+                    <h2>Information</h2>
+                    <ul class="text">
+                      <li>이름 : 고다연</li>
+                      <li>생일 : 09-03</li>
+                      <li>MBTI : ISTP</li>
+                      <li>취미 : 목공</li>
+                      <li>깃허브 : <a target="_blank" href="https://github.com/kodayun">https://github.com/kodayun</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2>TMI</h2>
+                    <ul class="text">
+                      <li>항공사직원에서  개발자로 도전</li>
+                      <li>호기심 많음</li>
+                      <li>백엔드에 사용되는 DB 기본 개념 공부중</li>
+                      <li>[왕초보] 웹개발 종합반 무한반복 재생중</li>
+                    </ul>
+                  </div>
+                  <div class="comment-section">
+                    <h2>댓글</h2>
+                    <div class="comments">
+                      <!-- 댓글 추가되는 곳 -->
+                    </div>
+                    <textarea class="comment-input" rows="4" cols="50" placeholder="댓글을 입력해주세요..."></textarea>
+                    <br>
+                    <button class="submit-comment" style="cursor: pointer; ">댓글 등록</button>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-danger" id="close3" style="cursor: pointer;">닫기</button>
+                </div>
+              </div>
+            </div>
+            
+    
+        
+            <div class="black-bg" id="modal4">
+              <div class="white-bg">
+                <!-- 모달창용4 내용 -->
+                <div>
+                  <div style="text-align: center">
+                    <img src="imgs/정서윤.jpg" style="width: 80px; border-radius: 100px;">
+                    <h1>정서윤</h1>
+                  </div>
+                  <hr>
+                  <div>
+                    <h2>Information</h2>
+                    <ul class="text">
+                      <li>이름 : 정서윤</li>
+                      <li>생일 : 05-24</li>
+                      <li>MBTI : INFJ</li>
+                      <li>취미 : 풍경사진 찍기</li>
+                      <li>깃허브 : <a target="_blank" href="https://github.com/YOON0425">https://github.com/YOON0425</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2>TMI</h2>
+                    <ul class="text">
+                      <li>진로 탐색 중</li>
+                      <li>코딩 완전 초보자</li>
+                      <li>콘솔게임 좋아함, 중고 게임샵 자주 다님</li>
+                      <li>특기: 외국어</li>
+                    </ul>
+                  </div>
+                  <div class="comment-section">
+                    <h2>댓글</h2>
+                    <div class="comments">
+                      <!-- 댓글 추가되는 곳 -->
+                    </div>
+                    <textarea class="comment-input" rows="4" cols="50" placeholder="댓글을 입력해주세요..."></textarea>
+                    <br>
+                    <button class="submit-comment" style="cursor: pointer; ">댓글 등록</button>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-danger" id="close4" style="cursor: pointer;">닫기</button>
+                </div>
+              </div>
             </div>
 
-            <div id="namecard2" style="display:none">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">오승민</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                        ago</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+        <!--여기부터 팀 소개 모달 창 입니다-->
+        <div class="modal" id="modal-position">
+            <div class="modal_body">
+                <br>
+                <h4 class='blink'style="font-style:italic; font-size: 50px;">9조대</h4>
+                <br><br>
+                <img src="imgs/구급차 사진.jpeg" style="width: 200px; height:auto;">
+                <p ></p>
+                
+                <p style="font-size: 20px;"><웹개발 왕초보들이 모여 서로가 서로를 구조해주는 TEAM></p>
+                <br>
+                <p> <b>9조대 규칙</b></p>
+                <div style="border: 1px solid black;">
+                <p>1. 점심시간 13:00~14:00 , 저녁시간 18:00~19:00 으로 한다.</p>
+                <p>2. 결석 시에는 전날 교육과정 완료 시간 전까지 팀원들에게 전달한다.</p>
+                <p>3. 일정 조율/ 팀간의 의사소통은 팀 슬렉방을 통해서 전달한다.</p>
+                <p>4. 모르는 부분은 팀원, 튜터님을 통하여 부끄러워하지 않고 제대로 확인한다.</p>
                 </div>
-            </div>
+                <br><br>
+                <button class="btn-close-modal">닫기</button>
 
-            <div id="namecard3" style="display:none">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">고다연</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                        ago</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="namecard4" style="display:none">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">정서윤</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                        ago</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
 
         <!--여기부터 팀 소개 모달 창 입니다-->
 
@@ -314,9 +439,93 @@
             btnCloseModal.addEventListener("click", () => {
                 modal.style.display = "none"
             });//모달창 닫기
-        </script>
+            $('.btn-modal1').on('click', function() {
+      $('#modal1').addClass('show-modal');
+    });
+
+    $('.btn-modal2').on('click', function() {
+      $('#modal2').addClass('show-modal');
+    });
+
+    $('.btn-modal3').on('click', function() {
+      $('#modal3').addClass('show-modal');
+    });
+
+    $('.btn-modal4').on('click', function() {
+      $('#modal4').addClass('show-modal');
+    });
+
+    $('.black-bg').on('click', function(event) {
+      if (!$(event.target).closest('.white-bg').length) {
+        $(this).removeClass('show-modal');
+      }
+    });
+
+    $('#close1').on('click', function() {
+      $('#modal1').removeClass('show-modal');
+    });
+
+    $('#close2').on('click', function() {
+      $('#modal2').removeClass('show-modal');
+    });
+
+    $('#close3').on('click', function() {
+      $('#modal3').removeClass('show-modal');
+    });
+
+    $('#close4').on('click', function() {
+      $('#modal4').removeClass('show-modal');
+    });
 
 
+
+  $('.submit-comment').on('click', function() {
+      var comment = $(this).siblings('.comment-input').val().trim();
+      if (comment !== "") {
+        var now = new Date();
+        var dateString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+        var commentElement = $('<div class="comment"><p class="content"></p><p class="date"></p><button class="delete-comment">삭제</button></div>');
+        commentElement.find('.content').text(comment);
+        commentElement.find('.date').text(dateString);
+        $(this).siblings('.comments').append(commentElement);
+        $(this).siblings('.comment-input').val("");
+
+        // 로컬 스토리지에 댓글 저장
+        var savedComments = JSON.parse(localStorage.getItem('modal2Comments')) || [];
+        savedComments.push({text: comment, date: dateString});
+        localStorage.setItem('modal2Comments', JSON.stringify(savedComments));
+      } else {
+        alert("댓글을 입력해주세요!");
+      }
+    });
+
+    // 댓글 삭제
+    $(document).on('click', '.delete-comment', function() {
+      $(this).parent('.comment').remove();
+
+      // 로컬 스토리지에서도 삭제
+      var commentText = $(this).siblings('.content').text();
+      var commentDate = $(this).siblings('.date').text();
+      var savedComments = JSON.parse(localStorage.getItem('modal2Comments')) || [];
+      savedComments = savedComments.filter(function(comment) {
+        return !(comment.text === commentText && comment.date === commentDate);
+      });
+      localStorage.setItem('modal2Comments', JSON.stringify(savedComments));
+    });
+
+    // 페이지가 로드될 때 저장된 댓글을 가져와서 화면에 표시
+    var savedComments = JSON.parse(localStorage.getItem('modal2Comments')) || [];
+    savedComments.forEach(function(comment) {
+      var commentElement = $('<div class="comment"><p class="content"></p><p class="date"></p><button class="delete-comment">삭제</button></div>');
+      commentElement.find('.content').text(comment.text);
+      commentElement.find('.date').text(comment.date);
+      $('#modal2 .comments').append(commentElement);
+    });
+
+
+
+</script>
 </body>
 
 </html>
+
