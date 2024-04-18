@@ -46,6 +46,16 @@
       opacity: 1;
     }
 
+    /* 반짝이는 이펙트 css */
+    @keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink-effect 1s step-end infinite;}
+  
         .mytitle {
             font-family: "Black Han Sans", sans-serif;
             font-weight: 400;
@@ -105,7 +115,7 @@
             position: absolute;
             display: none;
             justify-content: center;
-            background-color: lightblue;
+            background-color: lightgray;
             top: 0;
             left: 0;
 
@@ -375,20 +385,24 @@
             </div>
 
         <!--여기부터 팀 소개 모달 창 입니다-->
-        <div class="modal">
+        <div class="modal" id="modal-position">
             <div class="modal_body">
-                <h4 style="font-style:italic; font-size: 50px;">9조대</h4>
+                <br>
+                <h4 class='blink'style="font-style:italic; font-size: 50px;">9조대</h4>
+                <br><br>
                 <img src="imgs/구급차 사진.jpeg" style="width: 200px; height:auto;">
                 <p ></p>
                 
                 <p style="font-size: 20px;"><웹개발 왕초보들이 모여 서로가 서로를 구조해주는 TEAM></p>
-                <p> 9조대 규칙</p>
+                <br>
+                <p> <b>9조대 규칙</b></p>
                 <div style="border: 1px solid black;">
                 <p>1. 점심시간 13:00~14:00 , 저녁시간 18:00~19:00 으로 한다.</p>
                 <p>2. 결석 시에는 전날 교육과정 완료 시간 전까지 팀원들에게 전달한다.</p>
                 <p>3. 일정 조율/ 팀간의 의사소통은 팀 슬렉방을 통해서 전달한다.</p>
                 <p>4. 모르는 부분은 팀원, 튜터님을 통하여 부끄러워하지 않고 제대로 확인한다.</p>
                 </div>
+                <br><br>
                 <button class="btn-close-modal">닫기</button>
 
             </div>
@@ -503,6 +517,9 @@
       commentElement.find('.date').text(comment.date);
       $('#modal2 .comments').append(commentElement);
     });
+
+
+
 </script>
 </body>
 
