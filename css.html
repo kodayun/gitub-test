@@ -51,28 +51,6 @@
             background-size: auto;
         }
 
-        .rulebtn {
-            font-family: "Abril Fatface", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-
-
-        .rulebtn>button {
-
-            float: right;
-            width: 300px;
-            height: 70px;
-            background-color: yellow;
-            color: black;
-            font-size: 30px;
-            border: 2px solid yellow;
-            border-radius: 30px;
-            margin-top: 500px;
-            margin-right: 70px;
-
-        }
 
         .teamname {
             font-family: "Black Han Sans", sans-serif;
@@ -127,6 +105,27 @@
             transform: translateY(-50%);
             /*모듈창열었을때 위치 가운데로*/
         }
+
+        .btn-open-modal {
+
+            font-family: "Abril Fatface", serif;
+            font-weight: 400;
+            font-style: normal;
+
+            position: fixed;
+            bottom: 20px;
+            right: 40px;
+
+            border: none;
+            border-radius: 20px;
+            background: yellow;
+            color: black;
+            padding: 12px;
+            font-weight: bold;
+            box-shadow: 0px 5px 15px gray;
+            cursor: pointer;
+            font-size: 30px;
+        }
     </style>
 
     <script>
@@ -176,10 +175,6 @@
 
     </div>
     <div>
-
-        <div class="rulebtn">
-            <button> Ground Rules</button>
-        </div>
 
         <div class="secondtitle" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">
             <h2>
@@ -287,6 +282,7 @@
         </div>
 
         <!--여기부터 팀 소개 모달 창 입니다-->
+
         <div class="modal">
             <div class="modal_body">
                 <h2>9조대</h2>
@@ -296,7 +292,8 @@
 
             </div>
         </div>
-        <button class="btn-open-modal">팀 소개</button>
+
+        <button class="btn-open-modal">Ground Rules</button>
         <script>
             //버튼을 눌렀을 때 모달창이 열리고 닫히게 하기
             const modal = document.querySelector('.modal');
