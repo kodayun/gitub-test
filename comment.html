@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀원에게 한마디 테스트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+        * {
+            font-family: "Nanum Pen Script", cursive;
+        }
+
+        .commentInputbtn {
+            margin-top: 10px;
+        }
+
+        .commentOutput {
+            margin-top: 50px;
+        }
+
+        table,
+        td {
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        table tr:first-child td {
+            background-color: black;
+            border: 0;
+            color: #fff;
+        }
+
+        .inputcomment {
+            margin-top: 15px;
+        }
+
+        .mytitle {
+            height: 250px;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-image: url('https://img.freepik.com/free-photo/textured-blackboard-with-chalks-and-eraser_53876-65449.jpg?w=1380&t=st=1713441118~exp=1713441718~hmac=ab91f55ede3b5c0d97903d34767dc9dc362590cdfe400d3a7ec39b4e37f20ba8');
+            background-position: center;
+            background-size: cover;
+
+            font-size: 25px;
+            text-align: center;
+            border: 1px solid gray;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+
+        .title {
+            margin: 10px;
+        }
+
+        .commentinput {
+            padding: 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .commentlabel {
+            margin-bottom: auto;
+        }
+    </style>
+    <script type="module">
+
+        $(document).ready(function () {
+            $('#commentBtn').click(function () {
+                commentInput();
+            });
+        });
+
+        function commentInput() {
+            let userName = $('#userName').val();
+            let userComment = $('#userComment').val();
+
+            let temp_html = `<tr>
+        <th>${userName}</th>
+        <th>${userComment}</th>
+        <th>
+            <button class="commentEditbtn">edit</button>
+        </th>
+        <th>
+            <button>delete</button>
+        </th>
+    </tr>`;
+            $('#commentTable').append(temp_html);
+        
+        }
+
+        $("#input").hide();
+        $("#savebtn").click(async function () {
+            $('#input').toggle();
+        });
+
+
+
+    </script>
+
+
+
+</head>
+
+<body>
+    <div class="mytitle">
+        <h1 class="title">팀원에게 한 마디</h1>
+        <p>현재시간:
+            <script>
+                date = new Date().toLocaleDateString();
+                document.write(date);
+            </script>
+        </p>
+
+        <button class="leavecomment" id="savebtn">코멘트 남기기</button>
+    </div>
+
+    <div id="input" class="commentinput" style="border: black solid 1px">
+        <form id="input" action="url" method="get">
+            <!--팀원에게 한마디 입력창입니다-->
+            <div class="inputarea">
+                <label for="">닉네임:</label>
+                <input type="text" id="userName" name="nickname" placeholder="">
+            </div>
+            <div>
+                <label class="commentlabel" for="">내용:</label>
+                <textarea class="inputcomment" name="comment" id="userComment" rows="3" cols="30"
+                    placeholder="하시고 싶은 말을 적어주세요"></textarea>
+            </div>
+            <div class="commentInputbtn">
+                <button type="button" id="commentBtn">등록하기</button>
+            </div>
+    </div>
+    </form>
+    <!--팀원에게 한마디 출력창입니다-->
+    <table class="commentOutput">
+        <tbody id="commentTable">
+            <tr>
+                <td style="width: 15%">닉네임</td>
+                <td style="width: 69%">내용</td>
+                <td style="width: 8%">수정</td>
+                <td style="width: 8%">삭제</td>
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+
+</html>
