@@ -1,108 +1,179 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>재영의 프로필</title>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <style>
-    .black-bg {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0; 
-  left: 0; 
-  display: flex; 
-  justify-content: center; /* 수평 가운데 정렬 */
-  align-items: center; 
-  background: rgba(0,0,0,0.5);
-  z-index: 5;
-  padding: 30px;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 1s;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀원에게 한마디 테스트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-.white-bg {
-  background: white;
-  border-radius: 5px;
-  padding: 30px;
-  max-height: 80%; 
-  overflow-y: auto; 
-}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
-    .show-modal {
-      visibility: visible;
-      opacity: 1;
-    }
+        * {
+            font-family: "Nanum Pen Script", cursive;
+        }
 
-    .comment-section {
-      margin-top: 20px;
-    }
+        .commentInputbtn {
+            margin-top: 10px;
+        }
 
-    .comment {
-      margin-bottom: 10px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
+        .commentOutput {
+            margin-top: 50px;
+        }
 
-    .comment .content {
-      font-weight: bold;
-    }
+        table,
+        td {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    .comment .date {
-      font-size: 12px;
-      color: #777;
-    }
-  </style>
+        table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        table tr:first-child td {
+            background-color: black;
+            border: 0;
+            color: #fff;
+        }
+
+        .inputcomment {
+            margin-top: 15px;
+        }
+
+        .mytitle {
+            height: 250px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://img.freepik.com/free-photo/textured-blackboard-with-chalks-and-eraser_53876-65449.jpg?w=1380&t=st=1713441118~exp=1713441718~hmac=ab91f55ede3b5c0d97903d34767dc9dc362590cdfe400d3a7ec39b4e37f20ba8');
+            background-position: center;
+            background-size: cover;
+            font-size: 25px;
+            text-align: center;
+            border: 1px solid gray;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        .title {
+            margin: 10px;
+        }
+
+        .commentinput {
+            padding: 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .commentlabel {
+            margin-bottom: auto;
+        }
+    </style>
+    <script type="module">
+        $(document).ready(function () {
+            $('#commentBtn').click(function () {
+                commentInput();
+            });
+
+            $(document).on('click', '.commentEditbtn', function () {
+                var name = $(this).closest('tr').find('td:eq(0)').text();
+                var comment = $(this).closest('tr').find('td:eq(1)').text();
+                var newName = prompt("새로운 닉네임을 입력하세요:", name);
+                var newComment = prompt("새로운 내용을 입력하세요:", comment);
+
+                if (newName !== null && newComment !== null) {
+                    $(this).closest('tr').find('td:eq(0)').text(newName);
+                    $(this).closest('tr').find('td:eq(1)').text(newComment);
+                }
+            });
+
+            $(document).on('click', '.commentDelbtn', function () {
+                if (confirm("정말 삭제하시겠습니까?")) {
+                    $(this).closest('tr').remove();
+                }
+            });
+
+            $("#input").hide();
+            $("#savebtn").click(async function () {
+                $('#input').toggle();
+            });
+        });
+
+        function commentInput() {
+            let userName = $('#userName').val().trim();
+            let userComment = $('#userComment').val().trim();
+
+            if (userName === '' || userComment === '') {
+                alert('닉네임과 내용을 모두 입력해주세요.');
+                return;
+            }
+
+            if ($('#commentTable tr').length <= 10) {
+                let temp_html = `<tr>
+                    <td>${userComment}</td>
+                    <td>${userName}</td>
+                    <td><button class="commentEditbtn">수정</button></td>
+                    <td><button class="commentDelbtn">삭제</button></td>
+                </tr>`;
+                $('#commentTable').append(temp_html);
+            } else {
+                alert('최대 10개의 댓글만 등록 가능합니다.');
+            }
+        }
+    </script>
 </head>
+
 <body>
-  <div>
-    <div class="black-bg">
-      <div class="white-bg">
-        <div>
-          <div style="text-align: center">
-            <img src="../img/선재영.jpg" style="width: 80px; border-radius: 100px;">
-            <h1>선재영</h1>
-          </div>
-          <hr>
-          <div>
-            <h2>More information</h2>
-            <ul class="text">
-              <li>이름 : 선재영</li>
-              <li>생일 : 1998-04-22</li>
-              <li>핸드폰 : 010 - 7723 - 1892</li>
-              <li>이메일 : wodud1892@naver.com</li>
-              <li>깃허브 : <a target="_blank" href="https://github.com/wodm15">https://github.com/wodm15</a></li>
-            </ul>
-          </div>
-          <div>
-            <h2>Etc</h2>
-            <ul class="text">
-              <li>Python 자료구조 공부 중</li>
-              <li>자바스크립트 이것저것 해보는중</li>
-              <li>스파르타 nodejs 공부 중</li>
-              <li>특기는 일 만들어 하기</li>
-              <li>게임 좋아함</li>
-            </ul>
-          </div>
-          <div class="comment-section">
-            <h2>댓글</h2>
-            <div class="comments">
-              <!-- 댓글 추가되는 곳 -->
-            </div>
-            <textarea class="comment-input" rows="4" cols="50" placeholder="댓글을 입력해주세요..."></textarea>
-            <br>
-            <button class="submit-comment" style="cursor: pointer; ">댓글 등록</button>
-          </div>
-        </div>
-        <div>
-          <button type="button" class="btn btn-danger" id="close" style="cursor: pointer;">닫기</button>
-        </div>
-      </div>
+    <div class="mytitle">
+        <h1 class="title">팀원에게 한 마디</h1>
+        <p>현재시간:
+            <script>
+                date = new Date().toLocaleDateString();
+                document.write(date);
+            </script>
+        </p>
+
+        <button class="leavecomment" id="savebtn">코멘트 남기기</button>
     </div>
-    <button class='btn1'>선재영</button>
-  </div>
+
+    <div id="input" class="commentinput" style="border: black solid 1px">
+        <form id="input" action="url" method="get">
+            <!--팀원에게 한마디 입력창입니다-->
+            <div class="inputarea">
+                <label for="">닉네임:</label>
+                <input type="text" id="userName" name="nickname" placeholder="">
+            </div>
+            <div>
+                <label class="commentlabel" for="">내용:</label>
+                <textarea class="inputcomment" name="comment" id="userComment" rows="3" cols="30"
+                    placeholder="하시고 싶은 말을 적어주세요"></textarea>
+            </div>
+            <div class="commentInputbtn">
+                <button type="button" id="commentBtn">등록하기</button>
+            </div>
+    </div>
+    </form>
+    <!--팀원에게 한마디 출력창입니다-->
+    <table class="commentOutput">
+        <tbody id="commentTable">
+            <tr>
+                <td style="width: 15%">내용</td>
+                <td style="width: 69%">닉네임</td>
+                <td style="width: 8%">수정</td>
+                <td style="width: 8%">삭제</td>
+            </tr>
+       
+
+        </tbody>
+    </table>
 </body>
 
 </html>

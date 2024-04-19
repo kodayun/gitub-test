@@ -84,36 +84,54 @@
     </style>
     <script type="module">
 
-        $(document).ready(function () {
+$(document).ready(function () {
             $('#commentBtn').click(function () {
                 commentInput();
+            });
+
+            $(document).on('click', '.commentEditbtn', function() {
+                var name = $(this).closest('tr').find('td:eq(0)').text();
+                var comment = $(this).closest('tr').find('td:eq(1)').text();
+                var newName = prompt("새로운 닉네임을 입력하세요:", name);
+                var newComment = prompt("새로운 내용을 입력하세요:", comment);
+
+                if (newName !== null && newComment !== null) {
+                    $(this).closest('tr').find('td:eq(0)').text(newName);
+                    $(this).closest('tr').find('td:eq(1)').text(newComment);
+                }
+            });
+
+            $(document).on('click', '.commentDelbtn', function() {
+                if (confirm("정말 삭제하시겠습니까?")) {
+                    $(this).closest('tr').remove();
+                }
             });
         });
 
         function commentInput() {
-            let userName = $('#userName').val();
-            let userComment = $('#userComment').val();
+            let userName = $('#userName').val().trim();
+            let userComment = $('#userComment').val().trim();
 
-            let temp_html = `<tr>
-        <th>${userName}</th>
-        <th>${userComment}</th>
-        <th>
-            <button class="commentEditbtn">edit</button>
-        </th>
-        <th>
-            <button>delete</button>
-        </th>
-    </tr>`;
-            $('#commentTable').append(temp_html);
-        
+            if (userName === '' || userComment === '') {
+                alert('닉네임과 내용을 모두 입력해주세요.');
+                return;
+            }
+
+            if ($('#commentTable tr').length <= 10) {
+                let temp_html = `<tr>
+                    <td>${userName}</td>
+                    <td>${userComment}</td>
+                    <td><button class="commentEditbtn">수정</button></td>
+                    <td><button class="commentDelbtn">삭제</button></td>
+                </tr>`;
+                $('#commentTable').append(temp_html);
+            } else {
+                alert('최대 10개의 댓글만 등록 가능합니다.');
+            }
+
+            $('#userName').val('');
+            $('#userComment').val('');
         }
-
-        $("#input").hide();
-        $("#savebtn").click(async function () {
-            $('#input').toggle();
-        });
-
-
 
     </script>
 
