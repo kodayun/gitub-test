@@ -86,8 +86,8 @@
             $(document).on('click', '.commentEditbtn', function () {
                 var name = $(this).closest('tr').find('td:eq(0)').text();
                 var comment = $(this).closest('tr').find('td:eq(1)').text();
-                var newName = prompt("새로운 닉네임을 입력하세요:", name);
-                var newComment = prompt("새로운 내용을 입력하세요:", comment);
+                var newName = prompt("새로운 내용을 입력하세요:", name);
+                var newComment = prompt("새로운 닉네임을 입력하세요:", comment);
 
                 if (newName !== null && newComment !== null) {
                     $(this).closest('tr').find('td:eq(0)').text(newName);
